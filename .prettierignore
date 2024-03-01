@@ -1,0 +1,6 @@
+# 静态资源目录,无需lint
+public
+# 第三方依赖,无需lint
+node_modules
+# 构建输出目录,无需lint
+dist

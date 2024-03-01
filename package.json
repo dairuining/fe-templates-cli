@@ -1,0 +1,39 @@
+{
+  "name": "init-cli",
+  "version": "0.0.1",
+  "description": "初始化前端项目脚手架",
+  "bin": {
+    "init-cli": "./bin/index.js"
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "eslint": "npx eslint src/**/*.ts --fix",
+    "prettier": "npx prettier src/**/*.ts --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dairuining/init-cli.git"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "keywords": [],
+  "author": "dairuining",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/node": "^20.11.24",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5",
+    "rollup": "^4.12.0",
+    "rollup-plugin-node-externals": "^5.1.2",
+    "rollup-plugin-typescript2": "^0.36.0"
+  }
+}
