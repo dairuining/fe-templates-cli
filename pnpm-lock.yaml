@@ -53,6 +53,9 @@ devDependencies:
   inquirer:
     specifier: ^9.2.15
     version: 9.2.15
+  log-symbols:
+    specifier: ^6.0.0
+    version: 6.0.0
   ora:
     specifier: ^8.0.1
     version: 8.0.1

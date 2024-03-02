@@ -15,6 +15,10 @@ export const BUILD_TOOLS = [
     name: 'Webpack5',
     value: 'WEBPACK5',
   },
+  {
+    name: 'React',
+    value: 'REACT',
+  },
 ];
 
 // 是否采用VSCode作为开发编辑器
