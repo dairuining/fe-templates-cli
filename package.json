@@ -1,5 +1,5 @@
 {
-  "name": "init-cli",
+  "name": "dai-template-cli",
   "version": "0.0.1",
   "description": "初始化前端项目脚手架",
   "bin": {
@@ -17,7 +17,16 @@
   "engines": {
     "node": ">=16"
   },
-  "keywords": [],
+  "keywords": [
+    "cli",
+    "Vue3",
+    "Vite"
+  ],
+  "files": [
+    "dist",
+    "bin",
+    "README.md"
+  ],
   "author": "dairuining",
   "license": "ISC",
   "devDependencies": {
