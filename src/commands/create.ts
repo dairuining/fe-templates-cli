@@ -157,5 +157,5 @@ export const create = async (projectName: string) => {
     }
   }
   // 下载模板
-  await download({ projectName, ...answers });
+  download({ projectName, ...answers });
 };

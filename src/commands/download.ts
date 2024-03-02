@@ -1,7 +1,6 @@
 import ora from 'ora';
-import { copy } from 'fs-extra';
+import childProcess from 'child_process';
 import chalk from 'chalk';
-import { getCurrentPath, getCurrentDirPath } from './path';
 import { log } from './log';
 const figlet = require('figlet');
 
@@ -14,33 +13,37 @@ type DownloadParams = {
   isVscode: boolean;
 };
 
-// 模板路径映射
-const TEMPLATE_PATH_MAP: Record<string, string> = {
-  VITE: 'vue3-vite',
-  WEBPACK5: 'vue3-webpack5',
-  REACT: 'react',
-};
-
-// 模板基础路径
-const BASE_PATH = 'dist/templates';
-
 // 打印一个炫酷的文字工具
 const goodPrinter = async () => {
   const data = await figlet('init-cli');
   console.log(chalk.rgb(40, 156, 193).visible(data));
 };
 
-export const download = async (params: DownloadParams) => {
+// 构建工具映射模板类型
+const BUILD_TOOLS_MAP: Record<string, string> = {
+  VITE: 'Vue3-Vite-Pinia-TS',
+  WEBPACK5: 'Vue3-Webpack5-Vuex-TS',
+};
+
+export const download = (params: DownloadParams) => {
   const { projectName, buildTool } = params;
   /** 旋转动画 */
   const spinner = ora('正在下载模板中...');
   spinner.start();
-  // 拷贝模板
-  await copy(getCurrentPath(`${BASE_PATH}/${TEMPLATE_PATH_MAP[buildTool]}`), getCurrentDirPath(projectName));
-  spinner.succeed(`项目创建成功，项目名称：${chalk.bold.blueBright(projectName)}`);
-  log.success('执行以下命令启动项目：');
-  log.info(`cd ${chalk.blueBright(projectName)}`);
-  log.info(`npm ${chalk.blueBright('i')}`);
-  log.info(`${chalk.yellow('npm')} run serve`);
-  await goodPrinter();
+  const currentBranchName = BUILD_TOOLS_MAP[buildTool];
+  childProcess.exec(
+    `git clone -b ${currentBranchName} https://github.com/dairuining/template-list.git ${projectName}`,
+    async (error) => {
+      if (!error) {
+        spinner.succeed(`项目创建成功，项目名称：${chalk.bold.blueBright(projectName)}`);
+        log.success('执行以下命令启动项目：');
+        log.info(`cd ${chalk.blueBright(projectName)}`);
+        log.info(`npm ${chalk.blueBright('i')}`);
+        log.info(`${chalk.yellow('npm')} run serve`);
+        await goodPrinter();
+      } else {
+        spinner.fail(chalk.bold.blueBright('拉取模板失败，请检查网络状态!'));
+      }
+    },
+  );
 };
