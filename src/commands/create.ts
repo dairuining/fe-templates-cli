@@ -4,6 +4,9 @@ import { existsSync, remove } from 'fs-extra';
 import { getCurrentDirPath } from './path';
 import chalk from 'chalk';
 import ora from 'ora';
+import axios from 'axios';
+import { name, version } from '../../package.json';
+import { log } from './log';
 
 // 构建工具映射
 export const BUILD_TOOLS = [
@@ -104,7 +107,39 @@ const promptOverwrite = [
 const isExistDir = (projectName: string) => {
   return existsSync(getCurrentDirPath(projectName));
 };
+
+// NPM registry host
+const NPM_URL_HOST = 'registry.npm.wps.cn';
+
+// 比较版本大小
+const compareVersion = (latestVersion: string, version: string) => {
+  return latestVersion !== version;
+};
+
+/** 检查版本 */
+export const checkVersion = async (name: string, version: string) => {
+  try {
+    const NPM_URL = `https://${NPM_URL_HOST}/${name}`;
+    const { data } = await axios.get(NPM_URL);
+    const latestVersion = data['dist-tags'].latest;
+    // 比较版本号
+    const isUpdateVersion = compareVersion(latestVersion, version);
+    if (isUpdateVersion) {
+      log.success(
+        `检查到最新版本是：${chalk.bold.blackBright(latestVersion)}，当前版本是：${chalk.bold.blackBright(version)}`,
+      );
+      log.success(
+        `可使用：${chalk.yellow('npm install init-cli@latest -g')}，或者使用：${chalk.yellow('init-cli update')} 更新`,
+      );
+    }
+  } catch (error) {
+    log.warn(`检查版本失败, 请检查网络是否正常!!!, 错误信息: ${error}`);
+  }
+};
+
 export const create = async (projectName: string) => {
+  // 检查版本是否需要更新
+  await checkVersion(name, version);
   if (projectName) {
     promptList.shift();
   }

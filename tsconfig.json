@@ -33,5 +33,5 @@
     // "skipDefaultLibCheck": true,                      /* 跳过类型检查。d.ts类型脚本中包含的ts文件。 */
     "skipLibCheck": true /*  跳过类型检查所有.d.ts文件 */
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/templates/*", "dist/*"]
 }
