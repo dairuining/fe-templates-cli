@@ -109,7 +109,7 @@ const isExistDir = (projectName: string) => {
 };
 
 // NPM registry host
-const NPM_URL_HOST = 'registry.npm.wps.cn';
+const NPM_URL_HOST = 'registry.npmjs.org';
 
 // 比较版本大小
 const compareVersion = (latestVersion: string, version: string) => {
