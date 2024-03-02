@@ -1,6 +1,7 @@
 import { Command } from 'commander';
 import { version } from '../package.json';
 import { create } from './commands/create';
+import { update } from './commands/update';
 
 const program = new Command();
 
@@ -15,6 +16,15 @@ program
   .action((projectName) => {
     // 新建模板
     create(projectName);
+  });
+
+/** 更新脚手架版本 */
+program
+  .command('update')
+  .description('更新脚手架 init-cli')
+  .action(() => {
+    // 更新版本
+    update();
   });
 
 /** 解析命令行参数 */

@@ -42,5 +42,5 @@ export const download = async (params: DownloadParams) => {
   log.info(`cd ${chalk.blueBright(projectName)}`);
   log.info(`npm ${chalk.blueBright('i')}`);
   log.info(`${chalk.yellow('npm')} run serve`);
-  goodPrinter();
+  await goodPrinter();
 };
