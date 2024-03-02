@@ -5,6 +5,7 @@ import externals from 'rollup-plugin-node-externals';
 import json from '@rollup/plugin-json';
 import terser from '@rollup/plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
+import copy from 'rollup-plugin-copy';
 
 export default defineConfig([
   {
@@ -19,7 +20,10 @@ export default defineConfig([
     ],
     // 这些依赖的作用上文提到过
     plugins: [
-      nodeResolve(),
+      nodeResolve({
+        exportConditions: ['node'], // 对于默认导出需要配置
+        preferBuiltins: false,
+      }),
       externals({
         devDeps: false, // 可以识别我们 package.json 中的依赖当作外部依赖处理 不会直接将其中引用的方法打包出来
       }),
@@ -27,6 +31,9 @@ export default defineConfig([
       json(),
       commonjs(),
       terser(),
+      copy({
+        targets: [{ src: './src/templates/', dest: './dist/' }],
+      }),
     ],
   },
 ]);
