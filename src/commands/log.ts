@@ -15,4 +15,3 @@ export const log = {
     console.log(logSymbols.warning, message);
   },
 };
-export default log;

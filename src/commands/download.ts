@@ -3,6 +3,7 @@ import { copy } from 'fs-extra';
 import chalk from 'chalk';
 import { getCurrentPath, getCurrentDirPath } from './path';
 import { log } from './log';
+const figlet = require('figlet');
 
 // 下载参数类型
 type DownloadParams = {
@@ -23,6 +24,12 @@ const TEMPLATE_PATH_MAP: Record<string, string> = {
 // 模板基础路径
 const BASE_PATH = 'dist/templates';
 
+// 打印一个炫酷的文字工具
+const goodPrinter = async () => {
+  const data = await figlet('init-cli');
+  console.log(chalk.rgb(40, 156, 193).visible(data));
+};
+
 export const download = async (params: DownloadParams) => {
   const { projectName, buildTool } = params;
   /** 旋转动画 */
@@ -35,4 +42,5 @@ export const download = async (params: DownloadParams) => {
   log.info(`cd ${chalk.blueBright(projectName)}`);
   log.info(`npm ${chalk.blueBright('i')}`);
   log.info(`${chalk.yellow('npm')} run serve`);
+  goodPrinter();
 };
