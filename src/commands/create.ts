@@ -5,7 +5,7 @@ import { getCurrentDirPath } from './path';
 import chalk from 'chalk';
 import ora from 'ora';
 import axios from 'axios';
-import { name, version } from '../../package.json';
+import packageInfo from '../../package.json';
 import { log } from './log';
 
 // 构建工具映射
@@ -139,7 +139,7 @@ export const checkVersion = async (name: string, version: string) => {
 
 export const create = async (projectName: string) => {
   // 检查版本是否需要更新
-  await checkVersion(name, version);
+  await checkVersion(packageInfo.name, packageInfo.version);
   if (projectName) {
     promptList.shift();
   }

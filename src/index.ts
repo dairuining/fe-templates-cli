@@ -1,12 +1,12 @@
 import { Command } from 'commander';
-import { version } from '../package.json';
+import packageInfo from '../package.json';
 import { create } from './commands/create';
 import { update } from './commands/update';
 
 const program = new Command();
 
 // 实现version命令
-program.version(version, '-v --version');
+program.version(packageInfo.version, '-v --version');
 
 /** 实现create创建项目命令 */
 program
