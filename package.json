@@ -1,6 +1,6 @@
 {
   "name": "fe-templates-cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "初始化前端项目脚手架",
   "bin": {
     "fe-cli": "./bin/index.js"
