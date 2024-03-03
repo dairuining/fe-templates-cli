@@ -42,8 +42,8 @@ export const download = (params: DownloadParams) => {
         spinner.succeed(`项目创建成功，项目名称：${chalk.bold.blueBright(projectName)}`);
         log.success('执行以下命令启动项目：');
         log.info(`cd ${chalk.blueBright(projectName)}`);
-        log.info(`npm ${chalk.blueBright('i')}`);
-        log.info(`${chalk.yellow('npm')} run serve`);
+        log.info(`pnpm ${chalk.blueBright('install')}`);
+        log.info(`${chalk.yellow('pnpm')} run serve`);
         // await goodPrinter();
       } else {
         spinner.fail(chalk.bold.blueBright('拉取模板失败，请检查网络状态!'));
