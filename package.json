@@ -10,10 +10,6 @@
     "eslint": "npx eslint src/**/*.ts --fix",
     "prettier": "npx prettier src/**/*.ts --write"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dairuining/fe-templates-cli.git"
-  },
   "engines": {
     "node": ">=16"
   },
