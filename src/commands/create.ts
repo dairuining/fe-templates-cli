@@ -129,7 +129,7 @@ export const checkVersion = async (name: string, version: string) => {
         `检查到最新版本是：${chalk.bold.blackBright(latestVersion)}，当前版本是：${chalk.bold.blackBright(version)}`,
       );
       log.success(
-        `可使用：${chalk.yellow('npm install fe-templates-cli@latest -g')}，或者使用：${chalk.yellow('fe-templates-cli update')} 更新`,
+        `可使用：${chalk.yellow('npm install fe-templates-cli@latest -g')}，或者使用：${chalk.yellow('fe-cli update')} 更新`,
       );
     }
   } catch (error) {
