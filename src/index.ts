@@ -21,7 +21,7 @@ program
 /** 更新脚手架版本 */
 program
   .command('update')
-  .description('更新脚手架 init-cli')
+  .description('更新脚手架 fe-templates-cli')
   .action(() => {
     // 更新版本
     update();

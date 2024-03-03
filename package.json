@@ -1,9 +1,9 @@
 {
-  "name": "dai-template-cli",
-  "version": "0.0.8",
+  "name": "fe-templates-cli",
+  "version": "0.0.0",
   "description": "初始化前端项目脚手架",
   "bin": {
-    "init-cli": "./bin/index.js"
+    "fe-cli": "./bin/index.js"
   },
   "scripts": {
     "build": "rollup -c rollup.config.js --bundleConfigAsCjs",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dairuining/init-cli.git"
+    "url": "https://github.com/dairuining/fe-templates-cli.git"
   },
   "engines": {
     "node": ">=16"

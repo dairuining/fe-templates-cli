@@ -15,7 +15,7 @@ type DownloadParams = {
 
 // 打印一个炫酷的文字工具
 // const goodPrinter = async () => {
-//   const data = await figlet('init-cli');
+//   const data = await figlet('fe-templates-cli');
 //   console.log(chalk.rgb(40, 156, 193).visible(data));
 // };
 
