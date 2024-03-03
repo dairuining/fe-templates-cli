@@ -1,7 +1,9 @@
 import ora from 'ora';
 import childProcess from 'child_process';
 import chalk from 'chalk';
+import { remove } from 'fs-extra';
 import { log } from './log';
+import { getCurrentDirPath } from './path';
 // const figlet = require('figlet');
 
 // 下载参数类型
@@ -33,8 +35,10 @@ export const download = (params: DownloadParams) => {
   const currentBranchName = BUILD_TOOLS_MAP[buildTool];
   childProcess.exec(
     `git clone -b ${currentBranchName} https://github.com/dairuining/template-list.git ${projectName}`,
-    (error) => {
+    async (error) => {
       if (!error) {
+        console.log(getCurrentDirPath(`${projectName}/.git`), 'getCurrentDirPath(`${projectName}/.git`)');
+        await remove(getCurrentDirPath(`${projectName}/.git`));
         spinner.succeed(`项目创建成功，项目名称：${chalk.bold.blueBright(projectName)}`);
         log.success('执行以下命令启动项目：');
         log.info(`cd ${chalk.blueBright(projectName)}`);

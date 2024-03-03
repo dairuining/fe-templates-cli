@@ -71,7 +71,7 @@ const promptList = [
   {
     type: 'input',
     message: '请输入作者',
-    default: 'dai_name',
+    default: 'dairuining',
     name: 'author',
     validate: function (val: string) {
       return val ? true : '请输入作者';
