@@ -37,7 +37,7 @@ export const download = (params: DownloadParams) => {
     `git clone -b ${currentBranchName} https://github.com/dairuining/template-list.git ${projectName}`,
     async (error) => {
       if (!error) {
-        console.log(getCurrentDirPath(`${projectName}/.git`), 'getCurrentDirPath(`${projectName}/.git`)');
+        // 删除.git文件
         await remove(getCurrentDirPath(`${projectName}/.git`));
         spinner.succeed(`项目创建成功，项目名称：${chalk.bold.blueBright(projectName)}`);
         log.success('执行以下命令启动项目：');
